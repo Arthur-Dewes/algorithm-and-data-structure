@@ -1,39 +1,75 @@
-import java.util.EmptyStackException;
+import java.util.NoSuchElementException;
 
 public class Stack {
 
-        private linkedList Stack;
+    private class Node {
+        public Integer element;
+        public Node next;
 
-        public Stack() {
-            Stack = new linkedList();
-        }
-
-        public void push(Integer e) {
-            Stack.insert(e,0);
-        }
-
-        public void pop() {
-            if (Stack.isEmpty())
-                throw new EmptyStackException();
-            Stack.remove_at(0);
-        }
-
-        public Integer top() {
-            if (Stack.isEmpty())
-                throw new EmptyStackException();
-            return Stack.get(0);
-        }
-
-        public int size() {
-            return Stack.size();
-        }
-
-        public boolean isEmpty() {
-            return Stack.isEmpty();
-        }
-
-        public void clear() {
-            Stack.clear();
+        public Node(Integer element) {
+            this.element = element;
+            next = null;
         }
     }
 
+    private Node top;
+    private int capacity;
+
+    public Stack() {
+        top = null;
+        capacity = 0;
+    }
+
+    public void push(int value) {
+        Node n = new Node(value);
+        n.next = top;
+        top = n;
+        capacity++;
+    }
+
+    public void pop() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty!");
+        }
+        top = top.next;
+        capacity--;
+    }
+
+    public int peek() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Stack is empty!");
+        }
+        return top.element;
+    }
+
+    public int size() {
+        return capacity;
+    }
+
+    public boolean isEmpty() {
+        return top == null;
+    }
+
+    public void clear() {
+        top = null;
+        capacity = 0;
+    }
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        
+        if (capacity == 0) {
+            sb.append("Stack: No Element");
+        } else {
+            Node current = top;
+            sb.append("Stack: ");
+            while (current != null) {
+                sb.append(current.element).append(" ");
+                current = current.next;
+            }
+        }
+        
+        return sb.toString();
+    }
+    
+}
