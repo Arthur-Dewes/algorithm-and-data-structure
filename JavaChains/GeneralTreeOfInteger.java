@@ -154,10 +154,10 @@ public class GeneralTreeOfInteger {
     public boolean removeBranch(Integer element) {//implementado
         Node node = searchNodeRef(element, root);
         if (node == null) {
-            return false; // Elemento não encontrado
+            return false;
         }
 
-        if (node == root) { // Caso especial: remover a raiz
+        if (node == root) {
             root = null;
             count = 0;
             return true;
@@ -180,9 +180,9 @@ public class GeneralTreeOfInteger {
             return 0;
         }
     
-        int total = 1; // Conta o nó atual
+        int total = 1;
         for (int i = 0; i < n.getSubtreesSize(); i++) {
-            total += countNodes(n.getSubtree(i)); // Soma o número de nós dos filhos
+            total += countNodes(n.getSubtree(i));
         }
         return total;
     }
