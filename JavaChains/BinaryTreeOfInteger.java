@@ -185,6 +185,19 @@ public class BinaryTreeOfInteger {
         return node;
     }
 
+    public int height() {
+        return heightAux(root);
+    }
+    
+    private int heightAux(Node node) {
+        if (node == null) {
+            return -1; // Árvore vazia tem altura -1
+        }
+        int leftHeight = heightAux(node.left); // Altura da subárvore esquerda
+        int rightHeight = heightAux(node.right); // Altura da subárvore direita
+        return 1 + Math.max(leftHeight, rightHeight); // Altura atual é 1 + maior altura das subárvores
+    }
+    
     public LinkedListOfInteger positionsPre() {
         LinkedListOfInteger lista = new LinkedListOfInteger();
         positionsPreAux(root, lista);
