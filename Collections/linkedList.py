@@ -1,4 +1,9 @@
-#LL = (4, (12, (5, (-18, (-12, (16, (3, None)))))))
+"""
+This module contains a set of functions that operate on linked lists in a functional way.
+The linked list is represented as a tuple where the first element is the head and the second element is the tail.
+None represents the empty list, the end.
+LL = (4, (12, (5, (-18, (-12, (16, (3, None)))))))
+"""
 
 def selectionSort(LL):
     if not LL:
