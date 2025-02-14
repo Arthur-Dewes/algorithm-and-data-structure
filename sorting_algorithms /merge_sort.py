@@ -59,8 +59,8 @@ def mergeSort2(array):
         M = array[r:]
 
         # Sort the two halves
-        mergeSort(L)
-        mergeSort(M)
+        mergeSort2(L)
+        mergeSort2(M)
 
         i = j = k = 0
 
@@ -94,7 +94,7 @@ def merge_sort(l:list):
     mid = len(arr)//2;
     left = arr[:mid]
     right = arr[mid:]
-    return merge(merge_sort(left), merge_sort(right))
+    return merge2(merge_sort(left), merge_sort(right))
 
 def merge2(l, r):
     arr = []
