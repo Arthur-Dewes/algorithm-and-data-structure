@@ -3,7 +3,6 @@ import random
 def quicksort(data: list[int], left: int, right: int) -> None:
     if left == 0 and right == len(data) - 1:
         random.shuffle(data)
-        print(data, "shuffled")
     
     if left < right:
         pi = partition(data, left, right)
