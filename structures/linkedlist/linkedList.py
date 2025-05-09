@@ -163,7 +163,7 @@ class LinkedList:
         currentNo.value = value
 
     def __delitem__(self, pos) -> None:
-        if pos < 0: # converte indice negativo em positivo
+        if pos < 0:
             pos = len(self) + pos
 
         if pos < 0 or pos >= self.__count:
@@ -171,14 +171,14 @@ class LinkedList:
             
         if pos == 0:
             self.head = self.head.next
-            if self.head is None:  # Lista vazia após remoção
+            if self.head is None:
                 self.tail = None
         else:
             current = self.head
             for _ in range(pos - 1):
                 current = current.next
 
-            if current.next is None:  # Se removido o último nó
+            if current.next is None:
                 self.tail = current
             
             current.next = current.next.next
