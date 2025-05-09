@@ -1,14 +1,14 @@
-def mergeSort2(array):
+def mergeSort(array):
     if len(array) > 1:
 
-        #  r is the point where the array is divided into two subarrays
+        # r is the point where the array is divided into two subarrays
         r = len(array)//2
         L = array[:r]
         M = array[r:]
 
         # Sort the two halves
-        mergeSort2(L)
-        mergeSort2(M)
+        mergeSort(L)
+        mergeSort(M)
 
         i = j = k = 0
 

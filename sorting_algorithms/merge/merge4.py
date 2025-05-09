@@ -1,13 +1,13 @@
-def merge_sort(l:list):
+def mergeSort(l:list):
     arr = l[::]
     if len(arr) < 2:
         return arr
-    mid = len(arr)//2;
+    mid = len(arr)//2
     left = arr[:mid]
     right = arr[mid:]
-    return merge2(merge_sort(left), merge_sort(right))
+    return merge(mergeSort(left), mergeSort(right))
 
-def merge2(l, r):
+def merge(l, r):
     arr = []
     i = j = 0
     while i < len(l) and j < len(r):
