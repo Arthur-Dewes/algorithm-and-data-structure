@@ -8,20 +8,20 @@ class DualPivotQuickSort:
             self.right = right
             
     def sort(self):
-        self.dual_pivot_quicksort(0, len(self.arr) - 1)
+        self._dual_pivot_quicksort(0, len(self.arr) - 1)
     
-    def dual_pivot_quicksort(self, low, high):
+    def _dual_pivot_quicksort(self, low, high):
         if low >= high:
             return
         
-        pivot = self.partition(low, high)
-        self.dual_pivot_quicksort(low, pivot.left - 1)
-        self.dual_pivot_quicksort(pivot.left + 1, pivot.right - 1)
-        self.dual_pivot_quicksort(pivot.right + 1, high)
+        pivot = self._partition(low, high)
+        self._dual_pivot_quicksort(low, pivot.left - 1)
+        self._dual_pivot_quicksort(pivot.left + 1, pivot.right - 1)
+        self._dual_pivot_quicksort(pivot.right + 1, high)
     
-    def partition(self, low, high):
+    def _partition(self, low, high):
         if self.arr[low] > self.arr[high]:
-            self.swap(low, high)
+            self._swap(low, high)
             
         left_pivot_index = low + 1
         right_pivot_index = high - 1
@@ -29,20 +29,20 @@ class DualPivotQuickSort:
         
         while iterator <= right_pivot_index:
             if self.arr[iterator] < self.arr[low]:
-                self.swap(iterator, left_pivot_index)
+                self._swap(iterator, left_pivot_index)
                 iterator += 1
                 left_pivot_index += 1
             elif self.arr[iterator] > self.arr[high]:
-                self.swap(iterator, right_pivot_index)
+                self._swap(iterator, right_pivot_index)
                 right_pivot_index -= 1
             else:
                 iterator += 1
                 
-        self.swap(low, left_pivot_index - 1)
-        self.swap(high, right_pivot_index + 1)
+        self._swap(low, left_pivot_index - 1)
+        self._swap(high, right_pivot_index + 1)
         
         return self.Pivot(left_pivot_index - 1, right_pivot_index + 1)
     
-    def swap(self, first_index, second_index):
+    def _swap(self, first_index, second_index):
         if first_index != second_index:
             self.arr[first_index], self.arr[second_index] = self.arr[second_index], self.arr[first_index]
